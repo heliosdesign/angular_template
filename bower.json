@@ -1,0 +1,25 @@
+{
+  "name": "biology-of-story",
+  "version": "0.0.0",
+  "authors": [
+    "heliosdesignlabs <info@heliozilla.com>"
+  ],
+  "description": "A Biology of Story application.",
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/components"
+  ],
+  "devDependencies": {
+    "helios-frame-runner": "*",
+    "angular": "~1.2.25",
+    "standardize": "~1.2.2",
+    "angular-route": "~1.2.25",
+    "underscore": "~1.7.0"
+  },
+  "resolutions": {
+    "angular": "~1.2.25"
+  }
+}

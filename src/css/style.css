@@ -1,0 +1,157 @@
+/*
+ * - Paths
+ * - Colours
+ * - Layout
+ * - Typography
+ */
+/*
+ * Paths
+ */
+/*
+ * Colours
+ */
+/*
+ * Layout
+ */
+/*
+ * Typography
+ */
+/*
+ * - Functions
+ * - Mixins
+ */
+/*
+ * Mixins
+ */
+/* =HTML */
+/*----------------------------------------------------------- */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+textarea {
+  resize: vertical;
+}
+
+h1 {
+  font-family: sans-serif;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: sans-serif;
+  font-weight: 700;
+}
+
+h3 {
+  font-family: sans-serif;
+  font-weight: 700;
+}
+
+h4 {
+  font-family: sans-serif;
+  font-weight: 700;
+}
+
+h5 {
+  font-family: sans-serif;
+  font-weight: 700;
+}
+
+h6 {
+  font-family: sans-serif;
+  font-weight: 700;
+}
+
+p {
+  font-size: 0.95em;
+}
+
+/* =Classes */
+/*----------------------------------------------------------- */
+.site-header {
+  background: transparent;
+  color: white;
+  font-family: sans-serif;
+  height: 40px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 5000;
+}
+.site-header .site-nav {
+  position: absolute;
+}
+.site-header .site-nav ul {
+  margin: 0;
+}
+.site-header .site-nav li {
+  color: black;
+  float: left;
+  line-height: 40px;
+  list-style-type: none;
+}
+.site-header .site-nav li:hover {
+  color: white;
+}
+.site-header .site-nav a {
+  color: inherit;
+  padding: 0 1em;
+  text-decoration: none;
+}
+
+.site-branding {
+  margin: 0;
+}
+
+.view-wrapper {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.main-wrapper {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.site-footer {
+  background: transparent;
+  color: white;
+  height: 40px;
+  left: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
