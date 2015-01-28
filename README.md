@@ -10,6 +10,4 @@ Grunt is set up to `watch` and `build`.
 
 ### Bower
 
-Bower is only nominally set up (`.bowerrc`). Run `bower init` to setup. Packages are installed to `src/components`.
-
-ie `angular angular-route
+Bower is set up with Angular, standard Angular modules, Underscore, and Helios Frame Runner. Run `bower install` to install packages to to `src/components`.
