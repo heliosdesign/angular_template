@@ -1,6 +1,15 @@
-# Biology of Story
+# Helios Angular Template
 
-### Tech
+`git clone git@github.com:heliosdesign/angular_template.git`
 
-- [d3.js](http://d3js.org/)
-- [Javascript-Voronoi](https://github.com/gorhill/Javascript-Voronoi) by [Raymond Hill](http://www.raymondhill.net/)
+### Grunt
+
+`npm install`
+
+Grunt is set up to `watch` and `build`.
+
+### Bower
+
+Bower is only nominally set up (`.bowerrc`). Run `bower init` to setup. Packages are installed to `src/components`.
+
+ie `angular angular-route
