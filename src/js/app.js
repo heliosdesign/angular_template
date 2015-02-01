@@ -19,7 +19,10 @@ angular.module('angularApp', [
   $routeProvider.when('/', {
     templateUrl: 'partials/home.html',
     controller: 'viewCtrl',
-    reloadOnSearch: false
+    reloadOnSearch: false,
+    // resolve: {
+    //   data: function( loadData ){ return loadData }
+    // }
   })
 
   // $routeProvider.when('/:view', {
