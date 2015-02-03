@@ -1,4 +1,5 @@
 .*
+!.bowerrc
 /_*
 /dist
 /node_modules
