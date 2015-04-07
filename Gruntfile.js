@@ -37,7 +37,7 @@ module.exports = function(grunt){
 
       sass: {
         options: { livereload: false }, // don't reload for sass files; pass them on to the processors
-        files: ['src/sass/*.sass'],
+        files: ['src/sass/**/*.sass'],
         tasks: ['sass', 'autoprefixer']
       }
     },
