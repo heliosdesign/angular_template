@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="angularApp" ng-controller="appCtrl">
+<html lang="en" ng-app="app" ng-controller="AppController as app">
 <head>
 
   <title>Helios Angular Template</title>
@@ -9,6 +9,22 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Social Media Meta -->
+  <meta itemprop="name"        content="">
+  <meta itemprop="description" content="">
+  <meta itemprop="image"       content="">
+
+  <meta property="og:site_name"   content="" />
+  <meta property="og:description" content="" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:image"       content="" />
+
+  <meta name="twitter:card"        content="summary">
+  <meta name="twitter:site"        content="@heliosdesignlabs">
+  <meta name="twitter:title"       content="">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:image"       content="">
+
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Favicons -->
@@ -17,7 +33,7 @@
 
 </head>
 
-<body ng-class="appData.bodyClass">
+<body ng-class="app.bodyClass">
 
   <div class="view-wrapper" ng-view></div>
 
@@ -29,7 +45,7 @@
     <script src="components/angular-animate/angular-animate.js"></script>
     <script src="components/angular-sanitize/angular-sanitize.js"></script>
     <script src="components/angular-touch/angular-touch.js"></script>
-    
+
     <script src="components/underscore/underscore.js"></script>
 
     <script src="components/helios-frame-runner/helios-frame-runner.angular.js"></script>
@@ -38,11 +54,16 @@
 
   <!-- build:js js/app.min.js -->
 
-    <script src="js/app.js"></script>
-    <script src="js/values.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/directives.js"></script>
-    <script src="js/controllers.js"></script>
+    <script src="app/app.js"></script>
+
+    <script src="app/core/app.ctrl.js"></script>
+    <script src="app/core/router.js"></script>
+    <script src="app/core/constants.value.js"></script>
+    <script src="app/core/globals.value.js"></script>
+
+    <script src="app/example-module/example.ctrl.js"></script>
+    <script src="app/example-module/example-directive.dir.js"></script>
+    <script src="app/example-module/load-data.s.js"></script>
 
   <!-- endbuild -->
 
