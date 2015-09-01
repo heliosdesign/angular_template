@@ -7,17 +7,17 @@
 
   function AppController($scope, $location, $routeParams, globals) {
 
-    var vm = this;
+    var appData = this;
 
-    vm.bodyClass = [];
+    appData.bodyClass = [];
 
     if( window.location.host === 'localhost' || window.location.host == '205.186.156.50' )
       globals.debug = true;
 
     if ( globals.debug ){
       console.log('/* DEBUG */')
-      window.appData = vm;
-      vm.bodyClass.push('body-debug');
+      window.appData = appData;
+      appData.bodyClass.push('body-debug');
     }
 
     $scope.$on('$locationChangeStart', function(){
