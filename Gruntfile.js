@@ -1,24 +1,24 @@
 module.exports = function(grunt){
- 
+
   require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
- 
+
   grunt.initConfig({
 
     // ********************************************************
-    
+
     sass: {
- 
+
       dev: {
         options: { outputStyle: 'compressed', sourceMap: true },
-        files: {'src/css/style.css': 'src/sass/style.sass'},
+        files: {'src/css/style.css': 'src/style.sass'},
       },
 
       dist: {
         options: { outputStyle: 'compressed', sourceMap: true },
-        files: {'dist/css/style.css': 'src/sass/style.sass'},
+        files: {'dist/css/style.css': 'src/style.sass'},
       }
     },
- 
+
     autoprefixer: {
       options: {
         map: true, // Use and update the sourcemap
@@ -27,17 +27,17 @@ module.exports = function(grunt){
       dev: { src: 'src/css/style.css', dest: 'src/css/style.css' },
       dist: { src: 'dist/css/style.css', dest: 'dist/css/style.css' }
     },
- 
+
     watch: {
       options: { livereload: true, },
-      
+
       css: { files: ['src/css/style.css'] },
       js:  { files: ['js/**/*.js'] },
       html: { files: ['src/**/*.html'] },
 
       sass: {
         options: { livereload: false }, // don't reload for sass files; pass them on to the processors
-        files: ['src/sass/**/*.sass'],
+        files: ['src/**/*.sass'],
         tasks: ['sass', 'autoprefixer']
       }
     },
@@ -89,9 +89,9 @@ module.exports = function(grunt){
       }
     }
 
- 
+
   });
- 
+
   grunt.registerTask('default', ['sass:dev', 'autoprefixer:dev', 'watch']);
 
   grunt.registerTask('build', [
