@@ -15,6 +15,7 @@
   function ExampleDirective(){
     return {
       restrict: 'E',
+      replace: true,
       templateUrl: 'app/example-module/example-directive.html',
       scope: {},
       controller: ExampleDirectiveController,
