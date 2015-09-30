@@ -4,17 +4,15 @@ Please read: [Angular Style Guide](https://github.com/johnpapa/angular-styleguid
 
 ## Getting Started
 
-`npm install`
-
 Grunt is set up to `watch` and `build`.
-
-**Note!** You’ll need to use Node v0.10.33 otherwise `grunt-sass` won’t compile on your system.
 
 ### Bower
 
 Bower is set up with Angular, standard Angular modules, Underscore, and Helios Frame Runner. Run `bower install` to install packages to to `src/components`.
 
 ## Folder Structure
+
+Files should be grouped by feature/module, not by type: `/src/js/<module>/file.role.ext`.
 
 ```
 /
@@ -28,26 +26,21 @@ Bower is set up with Angular, standard Angular modules, Underscore, and Helios F
 
   /css
 
-  /js
+  /app
     app.js
 
     /core
       router.js
-      app.ctrl.js
+      app.controller.js
 
-    /module-name
-      module.ctrl.js
-      example-service.s.js
-      partial.html
-
-  /partials
-    /module-name
-      partial.html
-
-  /sass
-
+    /example-module
+      _example-module.sass
+      example-module.controller.js
+      example-module-service.service.js
+      example-module.template.html
+  
+  style.sass
   index.html
 
 ```
 
-Files should be grouped by feature, not by type: `/src/js/<module>/file.role.js`.
