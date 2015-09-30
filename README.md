@@ -44,3 +44,45 @@ Files should be grouped by feature/module, not by type: `/src/js/<module>/file.r
 
 ```
 
+An alternative.
+
+```
+/
+  [.bowerrc, bower.json, Gruntfile.js, package.json, etc]
+  README.md
+
+/src
+
+  /components
+  
+  /modules
+    /core
+	  app.js [or init.js]
+	  /assets
+	  /config
+	    core.routes.js
+	  /controllers
+	  /css
+	  /directives
+	  /sass
+	  /views
+	
+	/example-module
+	  /assets
+	  /config
+	  	example.routes.js
+	  /controllers
+	  	example.controller.js
+	  /css
+	  /directives
+	  	example.directive.js
+	  /sass
+	  /services
+	    example.services.js
+	  /views
+	  	example.view.js
+  
+  style.sass
+  index.html
+
+```
