@@ -25,7 +25,14 @@
   <meta name="twitter:description" content="">
   <meta name="twitter:image"       content="">
 
-  <link rel="stylesheet" href="css/style.css">
+  <!-- cssvendors:css -->
+  <link rel="stylesheet" href="components/standardize/standardize.css">
+  <!-- endinject -->
+
+  <!-- inject:css -->
+  <link rel="stylesheet" href="modules/core/css/core.css">
+  <link rel="stylesheet" href="modules/example/css/example.css">
+  <!-- endinject -->
 
   <!-- Favicons -->
   <!-- <link href="favicon.ico" type="image/x-icon" rel="icon" /> -->
@@ -37,35 +44,26 @@
 
   <div class="view-wrapper" ng-view></div>
 
-  <!-- build:js js/libs.min.js -->
-    <script src="components/jquery/dist/jquery.js"></script>
+  <!-- jsvendors:js -->
+  <script src="components/angular/angular.js"></script>
+  <script src="components/angular-route/angular-route.js"></script>
+  <script src="components/angular-animate/angular-animate.js"></script>
+  <script src="components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="components/angular-touch/angular-touch.js"></script>
+  <script src="components/underscore/underscore.js"></script>
+  <script src="components/helios-frame-runner/helios-frame-runner.angular.js"></script>
+  <!-- endinject -->
 
-    <script src="components/angular/angular.js"></script>
-    <script src="components/angular-route/angular-route.js"></script>
-    <script src="components/angular-animate/angular-animate.js"></script>
-    <script src="components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="components/angular-touch/angular-touch.js"></script>
-
-    <script src="components/underscore/underscore.js"></script>
-
-    <script src="components/helios-frame-runner/helios-frame-runner.angular.js"></script>
-
-  <!-- endbuild -->
-
-  <!-- build:js js/app.min.js -->
-
-    <script src="app/app.js"></script>
-
-    <script src="app/core/app.ctrl.js"></script>
-    <script src="app/core/router.js"></script>
-    <script src="app/core/constants.value.js"></script>
-    <script src="app/core/globals.value.js"></script>
-
-    <script src="app/example-module/example.ctrl.js"></script>
-    <script src="app/example-module/example-directive.dir.js"></script>
-    <script src="app/example-module/load-data.s.js"></script>
-
-  <!-- endbuild -->
+  <!-- inject:js -->
+  <script src="modules/core/app.js"></script>
+  <script src="modules/core/app.ctrl.js"></script>
+  <script src="modules/example/example.ctrl.js"></script>
+  <script src="modules/example/example.directive.js"></script>
+  <script src="modules/example/load-data.service.js"></script>
+  <script src="modules/core/config/core.routes.js"></script>
+  <script src="modules/core/values/constants.value.js"></script>
+  <script src="modules/core/values/globals.value.js"></script>
+  <!-- endinject -->
 
 </body>
 </html>

@@ -57,7 +57,7 @@ An alternative.
   
   /modules
     /core
-    app.js [or init.js]
+      app.js [or init.js]
     /assets
     /config
       core.routes.js

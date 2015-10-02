@@ -13,6 +13,6 @@
       'app.exampleModule',
 
       'heliosFrameRunner'
-    ])
+    ]);
 
 })();
