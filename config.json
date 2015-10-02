@@ -1,0 +1,18 @@
+{
+  "css": {
+    "lib": [
+      "src/components/standardize/standardize.css"
+    ]
+  },
+  "js": {
+    "lib": [
+      "src/components/angular/angular.js",
+      "src/components/angular-route/angular-route.js",
+      "src/components/angular-animate/angular-animate.js",
+      "src/components/angular-sanitize/angular-sanitize.js",
+      "src/components/angular-touch/angular-touch.js",
+      "src/components/underscore/underscore.js",
+      "src/components/helios-frame-runner/helios-frame-runner.angular.js"
+    ]
+  }
+}
