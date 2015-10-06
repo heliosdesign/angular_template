@@ -16,7 +16,7 @@
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/example-module/example-directive.html',
+      templateUrl: 'modules/example/example-directive.html',
       scope: {},
       controller: ExampleDirectiveController,
       controllerAs: 'vm'
