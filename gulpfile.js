@@ -38,7 +38,7 @@ gulp.task('clean', function(){
 
 // SASS compiling task.
 gulp.task('sass', function() {
-  return gulp.src([src.modules + '/*/sass/**/*.sass'])
+  return gulp.src([src.modules + '/**/*.sass'])
     .pipe(plugins.sass({indentedSyntax: true}))
     .on('error', swallowError)
     .pipe(plugins.autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
@@ -120,6 +120,8 @@ gulp.task('watch', function() {
   // watch just the CSS so livereload doesn’t reload the entire page
   gulp.watch([src.modules + '/**/*.sass'], ['sass']);
   gulp.watch([src.modules + '/**/*.css'], plugins.livereload.changed);
+
+  gulp.watch([src.modules + '/**/*.html'], plugins.livereload.changed);
 
   gulp.watch(src.modules + '/**/*.js', ['jshint']).on('change', plugins.livereload.changed);
 });

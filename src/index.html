@@ -31,7 +31,8 @@
 
   <!-- inject:css -->
   <link rel="stylesheet" href="modules/core/css/core.css">
-  <link rel="stylesheet" href="modules/example/css/example.css">
+  <link rel="stylesheet" href="modules/large/css/large.css">
+  <link rel="stylesheet" href="modules/small/css/small.css">
   <!-- endinject -->
 
   <!-- Favicons -->
@@ -40,7 +41,9 @@
 
 </head>
 
-<body ng-class="app.bodyClass">
+<body class="ng-cloak" ng-class="app.bodyClass">
+
+  <ng-include src="'./modules/core/assets/svgdefs.svg'"></ng-include>
 
   <div class="view-wrapper" ng-view></div>
 
@@ -57,9 +60,19 @@
   <!-- inject:js -->
   <script src="modules/core/app.js"></script>
   <script src="modules/core/app.ctrl.js"></script>
+<<<<<<< HEAD
   <script src="modules/example/example.ctrl.js"></script>
   <script src="modules/example/example.directive.js"></script>
   <script src="modules/example/load-data.service.js"></script>
+=======
+  <script src="modules/core/features.service.js"></script>
+  <script src="modules/core/loader.service.js"></script>
+  <script src="modules/core/resize.service.js"></script>
+  <script src="modules/large/example.ctrl.js"></script>
+  <script src="modules/large/large.directive.js"></script>
+  <script src="modules/large/load-data.service.js"></script>
+  <script src="modules/small/small.directive.js"></script>
+>>>>>>> master
   <script src="modules/core/config/core.routes.js"></script>
   <script src="modules/core/values/constants.value.js"></script>
   <script src="modules/core/values/globals.value.js"></script>
