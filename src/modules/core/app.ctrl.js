@@ -11,7 +11,7 @@
 
     appData.bodyClass = [];
 
-    if( window.location.host === 'localhost' || window.location.host == '205.186.156.50' )
+    if( window.location.host === 'localhost' || window.location.host === '205.186.156.50' )
       globals.debug = true;
 
     if ( globals.debug ){

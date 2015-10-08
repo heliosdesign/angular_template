@@ -6,7 +6,7 @@
   function Router($routeProvider){
 
     $routeProvider.when('/', {
-      templateUrl: 'app/example-module/home.html',
+      templateUrl: 'modules/large/home.html',
       controller: 'ExampleController',
       controllerAs: 'vm',
       reloadOnSearch: false,
