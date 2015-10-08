@@ -12,7 +12,7 @@
   'use strict';
 
   angular
-    .module('app.exampleModule')
+    .module('app')
     .directive('smallDirective', smallDirective);
 
   function smallDirective(){
@@ -23,7 +23,7 @@
 
       scope: {},
 
-      // see Readme for explanation of controllerAs
+      // see wiki for explanation of controllerAs
       controller: smallDirectiveController,
       controllerAs: 'vm',
       bindToController: true
