@@ -16,10 +16,12 @@
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/example-module/example-directive.html',
+      templateUrl: 'modules/large/large.directive.html',
       scope: {},
+
       controller: ExampleDirectiveController,
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      bindToController: true
     };
   }
 
