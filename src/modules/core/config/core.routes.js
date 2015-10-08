@@ -6,13 +6,13 @@
   function Router($routeProvider){
 
     $routeProvider.when('/', {
-      templateUrl: 'modules/example/home.html',
+      templateUrl: 'modules/large/home.html',
       controller: 'ExampleController',
       controllerAs: 'vm',
       reloadOnSearch: false,
-      // resolve: {
-      //   data: loadDataResolve
-      // }
+      resolve: {
+        data: function(loader){ return loader.load(); }
+      }
     });
 
     // function loadDataResolve( loadData ){ return loadData; }
