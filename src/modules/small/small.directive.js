@@ -8,7 +8,7 @@
   Increments a number.
 
 */
-;(function () {
+(function () {
   'use strict';
 
   angular
@@ -30,7 +30,7 @@
     };
   }
 
-  function smallDirectiveController(){
+  function smallDirectiveController($scope){
     var vm = this;
     vm.title = 'Small Directive';
     vm.increment = 0;
