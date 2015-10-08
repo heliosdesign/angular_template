@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "",
   "author": "heliosdesignlabs <hello@heliozilla.com>",
+  "repository": {
+    "type": "private",
+    "url": "https://github.com/heliosdesign/angular_template"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^2.2.0",
@@ -15,6 +19,17 @@
     "grunt-inline": "^0.3.4",
     "grunt-sass": "^0.18.1",
     "grunt-usemin": "^3.0.0",
-    "load-grunt-tasks": "^3.1.0"
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-jshint": "^1.11.2",
+    "gulp-livereload": "^3.8.1",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "load-grunt-tasks": "^3.1.0",
+    "run-sequence": "^1.1.4"
+  },
+  "dependencies": {
+    "gulp-inject": "^3.0.0"
   }
 }
