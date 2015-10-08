@@ -8,20 +8,15 @@
   function ExampleController($scope, $q, loadData) {
     var vm = this;
 
+    vm.message = '';
+
     activate();
 
-    vm.message = '';
+    // ********************************************************
 
     // place all start-up logic in this activate() function
     function activate(){
-      return $q(function(resolve, reject){
-        // load data or whatever is needed, then resolve
-        loadData.load()
-          .then(function(data){
-            vm.message = data.message;
-            resolve();
-          });
-      });
+      vm.message = 'Hi!';
     }
   }
 
