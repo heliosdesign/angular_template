@@ -1,28 +1,32 @@
-(function () {
+/*
+
+  App Controller
+
+    body-level controller, use for totally global functionality
+
+*/
+;(function () {
   'use strict';
 
   angular
     .module('app.core', [])
     .controller('AppController', AppController);
 
-  function AppController($scope, $location, $routeParams, globals) {
+  function AppController($scope, $location, $routeParams, globals, features) {
+    var app = this;
 
-    var appData = this;
-
-    appData.bodyClass = [];
+    app.bodyClass = [];
 
     // touch detect - can remove this if you're going to use Modernizr
-    var touch = !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch)
-    appData.bodyClass.push( touch ? 'touch' : 'no-touch' );
-
+    app.bodyClass.push( features.touch ? 'touch' : 'no-touch' );
 
     if( window.location.host === 'localhost' || window.location.host === '205.186.156.50' )
       globals.debug = true;
 
     if ( globals.debug ){
       console.log('/* DEBUG */');
-      window.appData = appData;
-      appData.bodyClass.push('body-debug');
+      window.app = app;
+      app.bodyClass.push('body-debug');
     }
 
     $scope.$on('$locationChangeStart', function(){
