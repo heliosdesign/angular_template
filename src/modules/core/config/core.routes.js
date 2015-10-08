@@ -11,7 +11,7 @@
       controllerAs: 'vm',
       reloadOnSearch: false,
       resolve: {
-        data: function(loader){ return loader.load() }
+        data: function(loader){ return loader.load(); }
       }
     });
 
