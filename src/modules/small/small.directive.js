@@ -12,7 +12,7 @@
   'use strict';
 
   angular
-    .module('app.exampleModule')
+    .module('app')
     .directive('smallDirective', smallDirective);
 
   function smallDirective(){
