@@ -1,11 +1,15 @@
+@import ../core/sass/core
+
 .small-directive
   display: block
-  width: 100px
-  height: 100px
   background: #ddd
   padding: 10px
 
 .small-directive .icon
-  width: 20px
-  height: 20px
-  // fill: $helios-orange
+  width: 50px
+  height: 50px
+  fill: $helios-orange
+  transition: fill 300ms
+
+  .no-touch &:hover
+    fill: $color-light
