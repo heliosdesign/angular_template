@@ -64,6 +64,8 @@ gulp.task('watch', function() {
   gulp.watch([src.modules + '/**/*.sass'], ['sass']);
   gulp.watch([src.modules + '/**/*.css'], plugins.livereload.changed);
 
+  gulp.watch([src.modules + '/**/*.html'], plugins.livereload.changed);
+
   gulp.watch(src.modules + '/**/*.js', ['jshint']).on('change', plugins.livereload.changed);
 });
 
