@@ -26,9 +26,13 @@
   <meta name="twitter:image"       content="">
 
   <!-- cssvendors:css -->
+  <link rel="stylesheet" href="components/standardize/standardize.css">
   <!-- endinject -->
 
   <!-- inject:css -->
+  <link rel="stylesheet" href="modules/core/css/core.css">
+  <link rel="stylesheet" href="modules/large/css/large.css">
+  <link rel="stylesheet" href="modules/small/css/small.css">
   <!-- endinject -->
 
   <!-- Favicons -->
@@ -42,9 +46,25 @@
   <div class="view-wrapper" ng-view></div>
 
   <!-- jsvendors:js -->
+  <script src="components/angular/angular.js"></script>
+  <script src="components/angular-route/angular-route.js"></script>
+  <script src="components/angular-animate/angular-animate.js"></script>
+  <script src="components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="components/angular-touch/angular-touch.js"></script>
+  <script src="components/underscore/underscore.js"></script>
+  <script src="components/helios-frame-runner/helios-frame-runner.angular.js"></script>
   <!-- endinject -->
 
   <!-- inject:js -->
+  <script src="modules/core/app.js"></script>
+  <script src="modules/core/app.ctrl.js"></script>
+  <script src="modules/large/large.ctrl.js"></script>
+  <script src="modules/large/large.directive.js"></script>
+  <script src="modules/large/load-data.service.js"></script>
+  <script src="modules/small/small.directive.js"></script>
+  <script src="modules/core/config/core.routes.js"></script>
+  <script src="modules/core/values/constants.value.js"></script>
+  <script src="modules/core/values/globals.value.js"></script>
   <!-- endinject -->
 
 </body>

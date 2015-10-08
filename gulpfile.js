@@ -24,7 +24,7 @@ var swallowError = function(error) {
 
 // SASS compiling task.
 gulp.task('sass', function() {
-  return gulp.src([src.modules + '/*/sass/**/*.sass'])
+  return gulp.src([src.modules + '/**/*.sass'])
     .pipe(plugins.sass({indentedSyntax: true}))
     .on('error', swallowError)
     .pipe(plugins.autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
