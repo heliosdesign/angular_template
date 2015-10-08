@@ -1,7 +1,5 @@
-<div class="small-directive">
-  <div class="icon">
-    <svg><use xlink:href="#svg-helios-logo"></svg>
-  </div>
+<div class="small">
+  <svg class="small-icon"><use xlink:href="#svg-helios-logo"></svg>
   <h2>{{ vm.title }}</h2>
-  <p><a ng-click="vm.increment()">Increment</a> {{ vm.increment }}</p>
+  <p><span class="small-button" ng-click="vm.action()">Increment</span> {{ vm.increment }}</p>
 </div>

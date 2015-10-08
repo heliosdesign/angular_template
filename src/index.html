@@ -30,8 +30,8 @@
   <!-- endinject -->
 
   <!-- inject:css -->
-  <link rel="stylesheet" href="modules/core/css/core.css">
   <link rel="stylesheet" href="modules/small/css/small.css">
+  <link rel="stylesheet" href="modules/core/css/core.css">
   <link rel="stylesheet" href="modules/large/css/large.css">
   <!-- endinject -->
 
@@ -41,7 +41,9 @@
 
 </head>
 
-<body ng-class="app.bodyClass">
+<body class="ng-cloak" ng-class="app.bodyClass">
+
+  <ng-include src="'./modules/core/assets/svgdefs.svg'"></ng-include>
 
   <div class="view-wrapper" ng-view></div>
 
@@ -57,9 +59,17 @@
 
   <!-- inject:js -->
   <script src="modules/core/app.js"></script>
+  <script src="modules/small/small.directive.js"></script>
   <script src="modules/core/app.ctrl.js"></script>
+<<<<<<< HEAD
   <script src="modules/small/small.directive.js"></script>
   <script src="modules/large/large.ctrl.js"></script>
+=======
+  <script src="modules/core/features.service.js"></script>
+  <script src="modules/core/loader.service.js"></script>
+  <script src="modules/core/resize.service.js"></script>
+  <script src="modules/large/example.ctrl.js"></script>
+>>>>>>> 5746d0b5992a17e3318e15e1ce088b9ae5f206e9
   <script src="modules/large/large.directive.js"></script>
   <script src="modules/large/load-data.service.js"></script>
   <script src="modules/core/config/core.routes.js"></script>
