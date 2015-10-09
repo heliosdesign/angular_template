@@ -15,6 +15,12 @@
       }
     });
 
+    $routeProvider.when('/error', {
+      templateUrl: 'modules/error/error.controller.html',
+      controller: 'ErrorController',
+      controllerAs: 'vm',
+    })
+
     // function loadDataResolve( loadData ){ return loadData; }
 
     // $routeProvider.when('/:view', {
