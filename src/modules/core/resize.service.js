@@ -21,13 +21,14 @@
     .module('app')
     .factory('resize', resize);
 
-  function resize($rootScope, features) {
+  function resize($rootScope, $window, $timeout, features) {
 
+    var _ = $window._;
     var windowResize = _.debounce(function(){ resizeFunction(true); }, 100, false);
 
     window.addEventListener('resize', windowResize, false);
 
-    if( features.orientation ){
+    if( features.orientation ) {
       window.addEventListener('deviceorientation', windowResize, false);
       window.addEventListener('orientationchange', windowResize, false);
     }
@@ -46,7 +47,7 @@
         contain: contain()
       };
 
-      if(emit) $rootScope.$emit('resize', data);
+      if(emit) { $rootScope.$emit('resize', data); }
       return data;
     }
 

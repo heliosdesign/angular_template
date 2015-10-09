@@ -113,6 +113,19 @@ gulp.task('templates', function() {
     .pipe(gulp.dest(dist.modules));
 });
 
+// Minify all the image files and move them
+gulp.task('svgmin', function() {
+  return gulp.src(src.modules + '/**/*.svg')
+    // .pipe(plugins.svgmin())
+    .pipe(gulp.dest(dist.modules));
+});
+
+// Move things that don't need to be minified.
+gulp.task('move', function() {
+  return gulp.src(src.modules + '/**/*.json')
+    .pipe(gulp.dest(dist.modules));
+});
+
 // The watch task.
 gulp.task('watch', function() {
   plugins.livereload.listen();
@@ -133,5 +146,5 @@ gulp.task('default', function(done) {
 
 // The main build task.
 gulp.task('build', function(done) {
-  runSequence('clean', ['sass', 'jshint'], ['cssmin', 'uglify'], 'templates', 'inject:prod', done);
+  runSequence('clean', ['sass', 'jshint'], ['cssmin', 'uglify', 'svgmin'], ['templates', 'move'], 'inject:prod', done);
 });
