@@ -20,8 +20,9 @@
     // touch detect - can remove this if you're going to use Modernizr
     app.bodyClass.push( features.touch ? 'touch' : 'no-touch' );
 
-    if( window.location.host === 'localhost' || window.location.host === '205.186.156.50' )
+    if( window.location.host === 'localhost' || window.location.host === '205.186.156.50' ) {
       globals.debug = true;
+    }
 
     if ( globals.debug ){
       console.log('/* DEBUG */');
