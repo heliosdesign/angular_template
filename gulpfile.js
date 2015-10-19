@@ -1,5 +1,6 @@
 var gulp            = require('gulp');
 var gulpLoadPlugins = require('gulp-load-plugins');
+var del             = require('del');
 var plugins         = gulpLoadPlugins();
 var runSequence     = require('run-sequence');
 var config          = require('./config.json');
@@ -70,7 +71,7 @@ gulp.task('uglify', function () {
   var files = config.js.lib;
   files.push(src.modules + '/**/*.js');
   return gulp.src(files)
-    .pipe(plugins.ngmin())
+    .pipe(plugins.ngAnnotate())
     .pipe(plugins.uglify({mangle: false}))
     .pipe(plugins.concat(dist.files.js))
     .pipe(gulp.dest(dist.base + '/js'));

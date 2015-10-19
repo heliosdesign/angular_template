@@ -30,9 +30,9 @@
   <!-- endinject -->
 
   <!-- inject:css -->
+  <link rel="stylesheet" href="modules/core/css/core.css">
   <link rel="stylesheet" href="modules/large/css/large.css">
   <link rel="stylesheet" href="modules/small/css/small.css">
-  <link rel="stylesheet" href="modules/core/css/core.css">
   <!-- endinject -->
 
   <!-- Favicons -->
@@ -45,29 +45,30 @@
 
   <ng-include src="'./modules/core/assets/svgdefs.svg'"></ng-include>
 
-  <div class="view-wrapper" ng-view></div>
+  <div class="view-wrapper" ui-view></div>
 
   <!-- jsvendors:js -->
   <script src="components/angular/angular.js"></script>
-  <script src="components/angular-route/angular-route.js"></script>
+  <script src="components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="components/angular-animate/angular-animate.js"></script>
-  <script src="components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="components/angular-touch/angular-touch.js"></script>
   <script src="components/underscore/underscore.js"></script>
   <script src="components/helios-frame-runner/helios-frame-runner.angular.js"></script>
+  <script src="components/audioMixer/helios-audio-mixer.js"></script>
   <!-- endinject -->
 
   <!-- inject:js -->
   <script src="modules/core/app.js"></script>
-  <script src="modules/large/example.ctrl.js"></script>
-  <script src="modules/large/large.directive.js"></script>
-  <script src="modules/large/load-data.service.js"></script>
-  <script src="modules/small/small.directive.js"></script>
   <script src="modules/core/app.ctrl.js"></script>
   <script src="modules/core/features.service.js"></script>
   <script src="modules/core/loader.service.js"></script>
   <script src="modules/core/resize.service.js"></script>
+  <script src="modules/large/example.ctrl.js"></script>
+  <script src="modules/large/large.directive.js"></script>
+  <script src="modules/large/load-data.service.js"></script>
+  <script src="modules/small/small.directive.js"></script>
+  <script src="modules/error/error.controller.js"></script>
   <script src="modules/core/config/core.routes.js"></script>
+  <script src="modules/core/config/core.statechangerror.js"></script>
   <script src="modules/core/values/constants.value.js"></script>
   <script src="modules/core/values/globals.value.js"></script>
   <!-- endinject -->
