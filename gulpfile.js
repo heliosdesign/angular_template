@@ -1,5 +1,6 @@
 var gulp            = require('gulp');
 var gulpLoadPlugins = require('gulp-load-plugins');
+var del             = require('del');
 var plugins         = gulpLoadPlugins();
 var runSequence     = require('run-sequence');
 var config          = require('./config.json');
@@ -8,6 +9,15 @@ var src = {
   base: 'src',
   modules: 'src/modules'
 };
+
+var dist = {
+  base: './dist',
+  modules: './dist/modules',
+  files: {
+    css: 'application.min.css',
+    js: 'application.min.js'
+  }
+}
 
 /**
  * Functions
@@ -22,6 +32,11 @@ var swallowError = function(error) {
  * Tasks
  */
 
+// Cleaning
+gulp.task('clean', function(){
+  return del([ dist.base + '/*', '!'+dist.base+'/.git*' ]);
+});
+
 // SASS compiling task.
 gulp.task('sass', function() {
   return gulp.src([src.modules + '/**/*.sass'])
@@ -34,12 +49,32 @@ gulp.task('sass', function() {
     .pipe(gulp.dest(src.modules));
 });
 
+// CSS minifying task
+gulp.task('cssmin', function () {
+  var files = config.css.lib;
+  files.push(src.modules + '/*/css/*.css');
+  return gulp.src(files)
+    .pipe(plugins.cssmin())
+    .pipe(plugins.concat(dist.files.css))
+    .pipe(gulp.dest(dist.base + '/css'));
+});
 
 // JS linting task.
 gulp.task('jshint', function () {
   return gulp.src([src.modules + '/**/*.js'])
     .pipe(plugins.jshint())
     .pipe(plugins.jshint.reporter('default'));
+});
+
+// JS minifying task
+gulp.task('uglify', function () {
+  var files = config.js.lib;
+  files.push(src.modules + '/**/*.js');
+  return gulp.src(files)
+    .pipe(plugins.ngAnnotate())
+    .pipe(plugins.uglify({mangle: false}))
+    .pipe(plugins.concat(dist.files.js))
+    .pipe(gulp.dest(dist.base + '/js'));
 });
 
 // Inject CSS and JS into index.html (for development);
@@ -57,6 +92,42 @@ gulp.task('inject:dev', function() {
     .pipe(gulp.dest(src.base));
 });
 
+// Inject CSS and JS into index.html and then minify it and move it to /dist (for production).
+gulp.task('inject:prod', function() {
+  var css = gulp.src(dist.base + '/css/' + dist.files.css);
+  var js = gulp.src(dist.base + '/js/' + dist.files.js);
+
+  return gulp.src(src.base + '/index.html')
+    .pipe(gulp.dest(dist.base))
+    .pipe(plugins.inject(gulp.src(['']), {addRootSlash: false, relative: true, name: 'cssvendors', empty: true, removeTags: true}))
+    .pipe(plugins.inject(css, {addRootSlash: false, relative: true, removeTags: true}))
+    .pipe(plugins.inject(gulp.src(['']), {addRootSlash: false, relative: true, name: 'jsvendors', empty: true, removeTags: true}))
+    .pipe(plugins.inject(js, {addRootSlash: false, relative: true, removeTags: true}))
+    .pipe(plugins.minifyHtml({conditionals: true, quotes: true}))
+    .pipe(gulp.dest(dist.base));
+});
+
+// Minify all the module templates and move them to /dist.
+gulp.task('templates', function() {
+  return gulp.src(src.modules + '/**/*.html')
+    .pipe(plugins.minifyHtml({conditionals: true, quotes: true}))
+    .pipe(gulp.dest(dist.modules));
+});
+
+// Minify all the image files and move them
+gulp.task('svgmin', function() {
+  return gulp.src(src.modules + '/**/*.svg')
+    // .pipe(plugins.svgmin())
+    .pipe(gulp.dest(dist.modules));
+});
+
+// Move things that don't need to be minified.
+gulp.task('move', function() {
+  return gulp.src(src.modules + '/**/*.json')
+    .pipe(gulp.dest(dist.modules));
+});
+
+// The watch task.
 gulp.task('watch', function() {
   plugins.livereload.listen();
 
@@ -69,6 +140,12 @@ gulp.task('watch', function() {
   gulp.watch(src.modules + '/**/*.js', ['jshint']).on('change', plugins.livereload.changed);
 });
 
+// The default task.
 gulp.task('default', function(done) {
   runSequence('sass', 'jshint', ['inject:dev'], 'watch', done);
+});
+
+// The main build task.
+gulp.task('build', function(done) {
+  runSequence('clean', ['sass', 'jshint'], ['cssmin', 'uglify', 'svgmin'], ['templates', 'move'], 'inject:prod', done);
 });

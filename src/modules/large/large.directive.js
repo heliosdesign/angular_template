@@ -18,7 +18,6 @@
       replace: true,
       templateUrl: 'modules/large/large.directive.html',
       scope: {},
-
       controller: ExampleDirectiveController,
       controllerAs: 'vm',
       bindToController: true
