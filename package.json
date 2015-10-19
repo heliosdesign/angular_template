@@ -28,7 +28,7 @@
   },
   "dependencies": {},
   "scripts": {
-    "cacheinstall": "tar -xzf packages.tar.gz && npm install && npm rebuild node-sass && bower install",
+    "packageinstall": "tar -xzf packages.tar.gz && npm install && npm rebuild node-sass && bower install",
     "package": "tar -czf packages.tar.gz ./src/components/ ./node_modules"
   }
 }
