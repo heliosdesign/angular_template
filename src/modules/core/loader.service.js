@@ -33,7 +33,7 @@
 
   function loader($q, $http){
 
-    return { load: load }
+    return { load: load };
 
     function load(){
       return $q(function(resolve, reject){
@@ -43,12 +43,12 @@
 
             // process the data here, if required
 
-            // send the data to services, if desired (ie service.setData(res.data))
+            // send the data to services here, if desired (ie service.setData(res.data))
 
-            resolve(res.data)
+            resolve(res.data);
           })
-          .catch(reject)
-      })
+          .catch(reject);
+      });
     }
 
   }

@@ -8,7 +8,7 @@
   Increments a number.
 
 */
-;(function () {
+(function () {
   'use strict';
 
   angular
@@ -24,13 +24,13 @@
       scope: {},
 
       // see wiki for explanation of controllerAs
-      controller: smallDirectiveController,
+      controller: SmallDirectiveController,
       controllerAs: 'vm',
       bindToController: true
     };
   }
 
-  function smallDirectiveController(){
+  function SmallDirectiveController($scope){
     var vm = this;
     vm.title = 'Small Directive';
     vm.increment = 0;

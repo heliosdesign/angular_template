@@ -4,10 +4,8 @@
   angular
     .module('app', [
 
-      'ngRoute', // 'ui.router',
+      'ui.router',
       'ngAnimate',
-      'ngSanitize',
-      'ngTouch',
 
       'app.core',
       'app.exampleModule',
