@@ -84,11 +84,28 @@ gulp.task('inject:dev', function() {
   var jslibs = gulp.src(config.js.lib, {read: false});
   var jssources = gulp.src([src.modules + '/core/app.js', src.modules + '/**/*.js'], {read: false});
 
+  var svgs = gulp.src([
+    src.modules + '/**/*.icon.svg',
+    '!' + src.modules + '/fonts/**.*'
+  ])
+  .pipe(plugins.svgmin())
+  .pipe(plugins.rename(function(path) {
+    path.basename = 'icon-' + path.basename.substring(0, path.basename.indexOf('.'));
+  }))
+  .pipe(plugins.svgstore({ inlineSvg: true }));
+
+  var fileContents = function(filePath, file) {
+    return file.contents.toString();
+  };
+
   return gulp.src(src.base + '/index.html')
     .pipe(plugins.inject(csslibs, {addRootSlash: false, relative: true, name: 'cssvendors'}))
     .pipe(plugins.inject(csssources, {addRootSlash: false, relative: true}))
     .pipe(plugins.inject(jslibs, {addRootSlash: false, relative: true, name: 'jsvendors'}))
     .pipe(plugins.inject(jssources, {addRootSlash: false, relative: true}))
+    .pipe(plugins.inject(svgs, {
+      transform: fileContents
+    }))
     .pipe(gulp.dest(src.base));
 });
 
@@ -116,10 +133,32 @@ gulp.task('templates', function() {
 
 // Minify all the image files and move them
 gulp.task('svgmin', function() {
-  return gulp.src(src.modules + '/**/*.svg')
-    // .pipe(plugins.svgmin())
-    .pipe(gulp.dest(dist.modules));
+  return gulp.src([
+      src.modules + '/**/*.svg',
+      '!' + src.modules + '/**/*.icon.svg',
+      '!' + src.modules + '/fonts/**.*'
+    ])
+    .pipe(plugins.svgmin())
+    .pipe(plugins.rename({
+      dirname: 'assets'
+    }))
+    .pipe(gulp.dest(dist.base));
 });
+
+// Take any svg marked .icon.svg and turn it into an svg sprite.
+gulp.task('icons', function() {
+  var svgs = gulp
+    .src([
+      src.modules + '/**/*.icon.svg',
+      '!' + src.modules + '/fonts/**.*'
+    ])
+    .pipe(plugins.svgmin())
+    .pipe(svgstore({ prefix: 'svg-', inlineSvg: true }));
+
+    function fileContents (filePath, file) {
+      return file.contents.toString();
+    }
+  });
 
 // Move things that don't need to be minified.
 gulp.task('move', function() {

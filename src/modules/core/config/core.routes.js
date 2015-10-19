@@ -29,7 +29,7 @@
         templateUrl: 'modules/error/error.controller.html',
         controller: 'ErrorController',
         controllerAs: 'vm',
-      })
+      });
 
   }
 })();
