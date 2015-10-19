@@ -12,7 +12,7 @@
     .module('app.core', [])
     .controller('AppController', AppController);
 
-  function AppController($scope, $location, $routeParams, globals, features) {
+  function AppController($scope, $location, globals, features) {
     var app = this;
 
     app.bodyClass = [];

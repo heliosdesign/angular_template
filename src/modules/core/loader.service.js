@@ -43,7 +43,7 @@
 
             // process the data here, if required
 
-            // send the data to services, if desired (ie service.setData(res.data))
+            // send the data to services here, if desired (ie service.setData(res.data))
 
             resolve(res.data);
           })
