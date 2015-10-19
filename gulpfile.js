@@ -30,10 +30,10 @@ var swallowError = function(error) {
 /**
  * Tasks
  */
+
 // Cleaning
-gulp.task('clean', function(){ 
-  gulp.src([dist.base + '/*', '!'+dist.base+'/.git*' ], {read: false})
-    .pipe(plugins.clean());
+gulp.task('clean', function(){
+  return del([ dist.base + '/*', '!'+dist.base+'/.git*' ]);
 });
 
 // SASS compiling task.
@@ -91,7 +91,7 @@ gulp.task('inject:dev', function() {
     .pipe(gulp.dest(src.base));
 });
 
-// Inject CSS and JS into index.html and then minify it and move it to /dist.
+// Inject CSS and JS into index.html and then minify it and move it to /dist (for production).
 gulp.task('inject:prod', function() {
   var css = gulp.src(dist.base + '/css/' + dist.files.css);
   var js = gulp.src(dist.base + '/js/' + dist.files.js);
