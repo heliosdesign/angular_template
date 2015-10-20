@@ -30,9 +30,9 @@
   <!-- endinject -->
 
   <!-- inject:css -->
-  <link rel="stylesheet" href="modules/small/css/small.css">
   <link rel="stylesheet" href="modules/core/css/core.css">
   <link rel="stylesheet" href="modules/large/css/large.css">
+  <link rel="stylesheet" href="modules/small/css/small.css">
   <!-- endinject -->
 
   <!-- Favicons -->
@@ -44,9 +44,9 @@
 <body class="ng-cloak" ng-class="app.bodyClass">
 
   <!-- <ng-include src="'./modules/core/assets/svgdefs.svg'"></ng-include> -->
-  <!-- inject:svg -->
-  <svg xmlns="http://www.w3.org/2000/svg"><symbol id="icon-helios-logo" viewBox="102 0 819 1024"><path d="M716 410V205H511v205H306V0H102v1024h204V613h205v206h205V613h205V410"/></symbol></svg>
-  <!-- endinject -->
+  <div style="display:none">
+    <!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg"><symbol id="icon-helios-logo" viewBox="102 0 819 1024"><path d="M716 410V205H511v205H306V0H102v1024h204V613h205v206h205V613h205V410"/></symbol></svg><!-- endinject -->
+  </div>
 
   <div class="view-wrapper" ui-view></div>
 
@@ -67,15 +67,15 @@
   <script src="modules/core/features.service.js"></script>
   <script src="modules/core/loader.service.js"></script>
   <script src="modules/core/resize.service.js"></script>
-  <script src="modules/small/small.directive.js"></script>
+  <script src="modules/error/error.controller.js"></script>
   <script src="modules/large/example.ctrl.js"></script>
   <script src="modules/large/large.directive.js"></script>
   <script src="modules/large/load-data.service.js"></script>
-  <script src="modules/error/error.controller.js"></script>
-  <script src="modules/core/values/constants.value.js"></script>
-  <script src="modules/core/values/globals.value.js"></script>
+  <script src="modules/small/small.directive.js"></script>
   <script src="modules/core/config/core.routes.js"></script>
   <script src="modules/core/config/core.statechangerror.js"></script>
+  <script src="modules/core/values/constants.value.js"></script>
+  <script src="modules/core/values/globals.value.js"></script>
   <!-- endinject -->
 
 </body>
