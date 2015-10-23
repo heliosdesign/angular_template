@@ -33,7 +33,11 @@
 
   function loader($q, $http){
 
-    return { load: load };
+    return {
+      load: load
+    };
+
+    // ********************************************************
 
     function load(){
       return $q(function(resolve, reject){

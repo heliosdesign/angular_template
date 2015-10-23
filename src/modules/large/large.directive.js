@@ -18,15 +18,11 @@
       replace: true,
       templateUrl: 'modules/large/large.directive.html',
       scope: {},
-      controller: ExampleDirectiveController,
-      controllerAs: 'vm',
-      bindToController: true
+      link: function(scope, $element, attrs){
+        scope.vm = {};
+        scope.vm.message = 'hey hey';
+      }
     };
-  }
-
-  function ExampleDirectiveController($scope){
-    var vm = this;
-    vm.message = 'hey hey';
   }
 
 })();
