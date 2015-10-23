@@ -23,22 +23,22 @@
 
       scope: {},
 
-      // see wiki for explanation of controllerAs
-      controller: SmallDirectiveController,
-      controllerAs: 'vm',
-      bindToController: true
+      link: function(scope, $element, attrs){
+
+        scope.vm = {};
+
+        scope.vm.title = 'Small Directive';
+        scope.vm.increment = 0;
+
+        scope.vm.action = action;
+
+        // ********************************************************
+
+        function action(){
+          scope.vm.increment += 1;
+        }
+      }
     };
-  }
-
-  function SmallDirectiveController($scope){
-    var vm = this;
-    vm.title = 'Small Directive';
-    vm.increment = 0;
-
-    vm.action = action;
-    function action(){
-      vm.increment += 1;
-    }
   }
 
 })();

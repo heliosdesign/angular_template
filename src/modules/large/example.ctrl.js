@@ -5,7 +5,7 @@
     .module('app.exampleModule', [])
     .controller('ExampleController', ExampleController);
 
-  function ExampleController($scope, $q, loadData) {
+  function ExampleController($scope, $q) {
     var vm = this;
 
     vm.message = '';
