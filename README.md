@@ -14,17 +14,13 @@ rm -rf .git
 git init
 ```
 
-Install npm packages and bower modules from `packages.tar.gz`.
-
-```
-npm run packageinstall
-```
+Run `npm install`, or install npm packages and bower modules from `packages.tar.gz` using `npm run packageinstall`.
 
 ### Gulp
 
-`gulp` compile sass, auto-inject js files.
+`gulp` to watch, livereload and auto-inject sass and js files.
 
-`gulp build` compile to `dist`.
+`gulp build` to compile to `dist`.
 
 `gulp module` creates a new module.
 
@@ -33,6 +29,7 @@ npm run packageinstall
 Bower is set up with Angular, standard Angular modules, Underscore, and Helios Frame Runner. Packages are installed to `src/components`.
 
 NOTE: when you add a new dependency, you’ll need to add its JS files to `config.json` so they can be injected into `index.html` by Gulp.
+
 
 ## Images and Icons
 
@@ -60,5 +57,5 @@ To use editable `.svg`s through the `<use>` syntax, do the following:
     fill: orange
 ```
 
-One thing to note: if you want to style the icon via CSS, make sure that there aren't any conflicting inline properties. Those properties can't be overridden.
-    
+One thing to note: if you want to style the icon via CSS, make sure that there aren't any conflicting inline properties, ie `fill="#fff"`. Those properties can't be overridden.
+

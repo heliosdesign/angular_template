@@ -7,6 +7,7 @@
 
   function ErrorController($scope) {
     var vm = this;
+    vm.message = 'Error!';
   }
 
 })();

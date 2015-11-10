@@ -14,13 +14,13 @@
 @mixin breakpoint($point)
 
   @if $point == "large"
-    @media (max-width: 63.em, min-width: 64em)
+    @media only screen and (max-width: 63.99em) and (min-width: 64em)
       @content
 
   @else if $point == "medium"
-    @media (max-width: 31.99em, min-width: 32em)
+    @media only screen and (max-width: 31.99em) and (min-width: 32em)
       @content
 
   @else if $point == "small"
-    @media (max-width: 32em)
+    @media only screen and (max-width: 32em)
       @content
