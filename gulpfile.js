@@ -52,7 +52,12 @@ var svgIcons = gulp.src([
 .pipe(plugins.svgmin())
 .pipe(plugins.svgstore({ inlineSvg: true }));
 
-var jsSources = config.js.lib.concat([ src.modules + '/**/*.js' ]);
+// libs from bower + modules
+var jsSources = config.js.lib.concat([
+  src.modules + '/core/app.js',
+  src.modules + '/**/init.js',
+  src.modules + '/**/*.js'
+]);
 
 /**
  * Tasks
