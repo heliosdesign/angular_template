@@ -5,3 +5,12 @@
 /dist
 /node_modules
 /src/components
+
+# Ignore all the modules
+/src/modules
+
+# Except for the example ones
+!/src/modules/core
+!/src/modules/error
+!/src/modules/large
+!/src/modules/small

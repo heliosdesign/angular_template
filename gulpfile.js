@@ -1,8 +1,10 @@
 var gulp            = require('gulp');
 var gulpLoadPlugins = require('gulp-load-plugins');
 var del             = require('del');
+var pathExists      = require('path-exists');
 var plugins         = gulpLoadPlugins();
 var runSequence     = require('run-sequence');
+var inquirer        = require('inquirer');
 var config          = require('./config.json');
 
 var src = {
@@ -79,7 +81,13 @@ gulp.task('jshint', function () {
 // JS minifying task
 gulp.task('uglify', function () {
   var files = config.js.lib;
-  files.push(src.modules + '/**/*.js');
+
+  files = files.concat([
+    src.modules + '/core/app.js',
+    src.modules + '/*/init.js', 
+    src.modules + '/**/*.js'
+  ]);
+
   return gulp.src(files)
     .pipe(plugins.ngAnnotate())
     .pipe(plugins.uglify({mangle: false}))
@@ -92,7 +100,11 @@ gulp.task('inject:dev', function() {
   var csslibs = gulp.src(config.css.lib, {read: false});
   var csssources = gulp.src([src.modules + '/**/*.css'], {read: false});
   var jslibs = gulp.src(config.js.lib, {read: false});
-  var jssources = gulp.src([src.modules + '/core/app.js', src.modules + '/**/*.js'], {read: false});
+  var jssources = gulp.src([
+    src.modules + '/core/app.js',
+    src.modules + '/*/init.js', 
+    src.modules + '/**/*.js'
+  ], {read: false});
 
   return gulp.src(src.base + '/index.html')
     .pipe(plugins.inject(csslibs, {addRootSlash: false, relative: true, name: 'cssvendors'}))
@@ -162,6 +174,42 @@ gulp.task('imagemin', function() {
 gulp.task('move', function() {
   return gulp.src(src.modules + '/**/*.json')
     .pipe(gulp.dest(dist.modules));
+});
+
+
+// Create a new modoule.
+gulp.task('module', function(done) {
+
+  inquirer.prompt([{
+    type: 'input',
+    message: 'What do you want to call your new module?',
+    name: 'module'
+  }], function(answers) {
+    if (answers.module) {
+
+      var dirname = answers.module.split('.').pop();
+
+      var string = [
+        "(function(AppConfig) {\n",
+        "  'use strict';\n\n",
+        "  AppConfig.registerModule('" + answers.module + "');\n\n",
+        "})(window.AppConfig);"
+      ].join('');
+
+      pathExists(src.modules + '/' + dirname).then(function(exists) {
+        if (!exists) {
+          return plugins.file('init.js', string, {src: true})
+            .pipe(gulp.dest(src.modules + '/' + dirname))
+            .pipe(plugins.util.log(plugins.util.colors.green(answers.module), 'Module Created'))
+        } else {
+          return plugins.util.log(plugins.util.colors.red(answers.module + ' already exists!'));
+        }
+      });
+
+    }
+    done();
+  });
+  
 });
 
 // The watch task.
