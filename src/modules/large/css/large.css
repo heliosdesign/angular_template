@@ -2,5 +2,10 @@ html, body {
   height: 100%;
   width: 100%; }
 
+.no-animate, .no-animate.ng-animate {
+  -webkit-animation: none 0s !important;
+          animation: none 0s !important;
+  transition-duration: 0s !important; }
+
 .example-module {
   display: block; }
