@@ -26,6 +26,8 @@ npm run packageinstall
 
 `gulp build` compile to `dist`.
 
+`gulp module` creates a new module.
+
 ### Bower
 
 Bower is set up with Angular, standard Angular modules, Underscore, and Helios Frame Runner. Packages are installed to `src/components`.

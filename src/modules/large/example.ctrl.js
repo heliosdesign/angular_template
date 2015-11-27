@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.exampleModule', [])
+    .module('app.exampleModule')
     .controller('ExampleController', ExampleController);
 
   function ExampleController($scope, $q) {
