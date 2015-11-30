@@ -20,6 +20,6 @@
     "standardize": "~1.2.2",
     "jquery": "~2.1.3",
     "helios-frame-runner": "~2.0.0",
-    "audioMixer": "helios-audio-mixer#~0.1.3"
+    "helios-audio-mixer": "^0.4.0"
   }
 }
