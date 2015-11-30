@@ -16,7 +16,7 @@ var config          = require('./config.json');
   Vars
 
 */
-var config, jsSources;
+var config, jsSources, svgSources;
 
 var src = {
   base:    './src',
@@ -35,6 +35,11 @@ var filenames = {
   js:  'application.min.js'
 }
 
+var svgSources = [
+  src.modules + '/**/icon-*.svg',
+  '!' + src.modules + '/fonts/**.*'
+];
+
 loadConfigFile();
 
 
@@ -46,14 +51,11 @@ loadConfigFile();
 function swallowError(error) {
   console.log(error.toString());
   this.emit('end');
-};
+}
 
-var svgIcons = gulp.src([
-  src.modules + '/**/icon-*.svg',
-  '!' + src.modules + '/fonts/**.*'
-])
-  .pipe(plugins.svgmin())
-  .pipe(plugins.svgstore({ inlineSvg: true }));
+function fileContents(filePath, file) {
+  return file.contents.toString();
+}
 
 // load the config file using fs (require caches it so we can’t reload it)
 function loadConfigFile(){
@@ -132,25 +134,19 @@ gulp.task('jshint', function () {
     .pipe(plugins.jshint.reporter('default'));
 });
 
-// Inject CSS and JS into index.html (for development);
-// gulp.task('inject:dev', function() {
-//   var csslibs = gulp.src(config.css.lib, {read: false});
-//   var csssources = gulp.src([src.modules + '/**/*.css'], {read: false});
-//   var jslibs = gulp.src(config.js.lib, {read: false});
-//   var jssources = gulp.src([
-//     src.modules + '/core/app.js',
-//     src.modules + '/*/init.js',
-//     src.modules + '/**/*.js'
-//   ], {read: false});
 
-//   return gulp.src(src.base + '/index.html')
-//     .pipe(plugins.inject(csslibs, {addRootSlash: false, relative: true, name: 'cssvendors'}))
-//     .pipe(plugins.inject(csssources, {addRootSlash: false, relative: true}))
-//     .pipe(plugins.inject(jslibs, {addRootSlash: false, relative: true, name: 'jsvendors'}))
-//     .pipe(plugins.inject(jssources, {addRootSlash: false, relative: true}))
+function getSvgIcons(){
+  return gulp.src(svgSources)
+    .pipe(plugins.svgmin())
+    .pipe(plugins.svgstore({ inlineSvg: true }))
+}
 
-//     .pipe(gulp.dest(src.base));
-// });
+// Inject svg defs into index.html
+gulp.task('svgInject', function() {
+  return gulp.src(src.base + '/index.html')
+    .pipe(plugins.inject(getSvgIcons(), { transform: fileContents }))
+    .pipe(gulp.dest(src.base));
+});
 
 // concat all scripts into a single js file to be loaded by mustard.js
 gulp.task('scripts:dev', function(){
@@ -298,7 +294,7 @@ gulp.task('module', function(done) {
 */
 
 // The default (watch) task.
-gulp.task('default', [ 'sass', 'basesass', 'scripts:dev', 'jshint' ], function() {
+gulp.task('default', [ 'sass', 'basesass', 'scripts:dev', 'svgInject', 'jshint' ], function() {
   plugins.livereload.listen();
 
   gulp.watch([src.modules + '/**/*.sass'], ['sass']);
@@ -310,14 +306,16 @@ gulp.task('default', [ 'sass', 'basesass', 'scripts:dev', 'jshint' ], function()
   gulp.watch(src.modules + '/**/*.js', ['jshint', 'scripts:dev']);
   gulp.watch([src.base + '/*.js', src.min + '/*.js'], plugins.livereload.changed);
 
+  gulp.watch(svgSources, ['svgInject']);
+
   gulp.watch('./config.json', ['reloadConfig']);
 });
 
 // The build task.
 gulp.task('build', function(done) {
   runSequence(
-    'clean',
-    ['sass', 'jshint', 'scripts:dist', 'svgmin', 'imagemin', 'templates', 'move', 'inline'],
+    ['clean', 'svgInject'],
+    ['sass', 'jshint', 'scripts:dist', 'imagemin', 'templates', 'move', 'inline'],
     done
   );
 });
