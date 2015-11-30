@@ -1,14 +1,14 @@
 var gulp            = require('gulp');
 var gulpLoadPlugins = require('gulp-load-plugins');
+var plugins         = gulpLoadPlugins();
+
 var del             = require('del');
 var pathExists      = require('path-exists');
-var plugins         = gulpLoadPlugins();
 var runSequence     = require('run-sequence');
-<<<<<<< HEAD
 var inquirer        = require('inquirer');
-var config          = require('./config.json');
-=======
 var fs              = require('fs')
+
+var config          = require('./config.json');
 
 
 /*
@@ -17,7 +17,6 @@ var fs              = require('fs')
 
 */
 var config, jsSources;
->>>>>>> reload config.json when it changes
 
 var src = {
   base:    './src',
@@ -33,15 +32,17 @@ var dist = {
 
 var filenames = {
   css: 'application.min.css',
-  js: 'application.min.js'
+  js:  'application.min.js'
 }
 
 loadConfigFile();
 
 
-/**
- * Functions and Utilities
- */
+/*
+
+  Functions and Utilities
+
+*/
 function swallowError(error) {
   console.log(error.toString());
   this.emit('end');
@@ -68,9 +69,11 @@ function loadConfigFile(){
 };
 
 
-/**
- * Tasks
- */
+/*
+
+  Tasks
+
+*/
 
 // Cleaning (except for dist/.git)
 gulp.task('clean', function(){
@@ -129,25 +132,7 @@ gulp.task('jshint', function () {
     .pipe(plugins.jshint.reporter('default'));
 });
 
-<<<<<<< HEAD
-// JS minifying task
-// gulp.task('uglify', function () {
-//   var files = config.js.lib;
-
-//   files = files.concat([
-//     src.modules + '/core/app.js',
-//     src.modules + '/*/init.js',
-//     src.modules + '/**/*.js'
-//   ]);
-
-//   return gulp.src(files)
-//     .pipe(plugins.ngAnnotate())
-//     .pipe(plugins.uglify({mangle: false}))
-//     .pipe(plugins.concat(dist.files.js))
-//     .pipe(gulp.dest(dist.base + '/js'));
-// });
-
-// // Inject CSS and JS into index.html (for development);
+// Inject CSS and JS into index.html (for development);
 // gulp.task('inject:dev', function() {
 //   var csslibs = gulp.src(config.css.lib, {read: false});
 //   var csssources = gulp.src([src.modules + '/**/*.css'], {read: false});
@@ -167,9 +152,7 @@ gulp.task('jshint', function () {
 //     .pipe(gulp.dest(src.base));
 // });
 
-=======
 // concat all scripts into a single js file to be loaded by mustard.js
->>>>>>> reload config.json when it changes
 gulp.task('scripts:dev', function(){
   return gulp.src(jsSources)
     .pipe(plugins.sourcemaps.init())
@@ -182,12 +165,12 @@ gulp.task('scripts:dev', function(){
 gulp.task('scripts:dist', function(){
   return gulp.src(jsSources)
     .pipe(plugins.sourcemaps.init())
-      .pipe(plugins.concat(filenames.js))
+      .pipe(plugins.ngAnnotate())
       .pipe(plugins.uglify({ mangle: false }))
+      .pipe(plugins.concat(filenames.js))
     .pipe(plugins.sourcemaps.write('.'))
     .pipe(gulp.dest(dist.min));
 })
->>>>>>> mustard cutting working
 
 // when the config json file changes, reload it
 gulp.task('reloadConfig', function(done){
