@@ -1,0 +1,41 @@
+@import global/variables
+
+html, body
+  height: 100%
+  width: 100%
+
+// add this class if you just want to use ng-show/hide without any animation,
+// otherwise ng-animate will fuck it up (https://github.com/angular/angular.js/issues/8224)
+.no-animate, .no-animate.ng-animate
+  animation: none 0s !important
+  transition-duration: 0s !important
+
+// Unsupported
+
+.un
+  width: 100%
+  max-width: 400px
+  margin: 0 auto
+.supported .un
+  display: none
+
+.un-title
+  font-size: 1.5em
+  font-weight: bold
+  text-align: center
+
+.un-body
+  margin: 1em 0
+
+.un-link
+  text-align: center
+  a
+    display: inline-block
+    background: $color-medium
+    color: $color-light
+    padding: 1em
+    text-decoration: none
+    transition: background-color 200ms
+
+    .no-touch &:hover
+      background: $helios-orange

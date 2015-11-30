@@ -1,0 +1,26 @@
+
+// ie @include font( 'Helvetica', 700, 'italic', '../fonts/', 'helvetica/helvetica-bold-italic')
+@mixin font($name, $weight, $style, $dir, $filename)
+  @font-face
+    font-family: $name
+    src: url($dir + $filename + '.eot')
+    src: url($dir + $filename + '.eot?#iefix') format("embedded-opentype"), url($dir + $filename + '.woff') format("woff")
+    font-weight: $weight
+    font-style: $style
+
+
+// ie @include breakpoint(large)
+
+@mixin breakpoint($point)
+
+  @if $point == "large"
+    @media only screen and (max-width: 63.99em) and (min-width: 64em)
+      @content
+
+  @else if $point == "medium"
+    @media only screen and (max-width: 31.99em) and (min-width: 32em)
+      @content
+
+  @else if $point == "small"
+    @media only screen and (max-width: 32em)
+      @content

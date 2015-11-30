@@ -17,7 +17,7 @@
     "plusplus": false,
     "quotmark": "single",
     "undef": true,
-    "unused": false,
+    "unused": "vars",
     "strict": false,
     "maxparams": 10,
     "maxdepth": 5,
@@ -25,7 +25,7 @@
     "maxcomplexity": 8,
     "maxlen": 120,
 
-    "asi": false,
+    "asi": true,
     "boss": false,
     "debug": false,
     "eqnull": true,

@@ -9,7 +9,7 @@
   'use strict';
 
   angular
-    .module('app.core', [])
+    .module('app.core')
     .controller('AppController', AppController);
 
   function AppController($scope, $location, globals, features) {
