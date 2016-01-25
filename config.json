@@ -9,11 +9,11 @@
       "src/components/angular/angular.js",
       "src/components/angular-ui-router/release/angular-ui-router.js",
       "src/components/angular-animate/angular-animate.js",
-      "src/components/angular-sanitize/angular-sanitize.js",
-      "src/components/angular-touch/angular-touch.js",
       "src/components/underscore/underscore.js",
-      "src/components/helios-frame-runner/helios-frame-runner.angular.js",
-      "src/components/audioMixer/helios-audio-mixer.js"
+      "src/components/helios-frame-runner/helios-frame-runner.angular.js"
+    ],
+    "tests": [
+      "src/components/angular-mocks/angular-mocks.js"
     ]
   }
 }
