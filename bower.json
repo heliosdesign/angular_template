@@ -13,13 +13,16 @@
     "src/components"
   ],
   "dependencies": {
-    "angular": "1.3.20",
-    "angular-animate": "1.3.20",
+    "angular": "1.4.9",
+    "angular-animate": "1.4.9",
     "angular-ui-router": "~0.2.15",
     "underscore": "~1.7.0",
     "standardize": "~1.2.2",
     "jquery": "~2.1.3",
     "helios-frame-runner": "~2.0.0",
     "helios-audio-mixer": "^0.4.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.9"
   }
 }

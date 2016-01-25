@@ -6,7 +6,8 @@ var del             = require('del');
 var pathExists      = require('path-exists');
 var runSequence     = require('run-sequence');
 var inquirer        = require('inquirer');
-var fs              = require('fs')
+var fs              = require('fs');
+var karma           = require('karma').Server;
 
 var config          = require('./config.json');
 
@@ -62,11 +63,13 @@ function loadConfigFile(){
   config = JSON.parse( fs.readFileSync('./config.json', 'utf8') );
 
   // add all js files in src/modules/ to libs list from config.json (bower, etc)
-  // the app, init, * order is necessary so angular recognizes modules properly
+  // the app, init, * order is necessary so angular recognizes modules properly.
+  // Test files are excluded.
   jsSources = config.js.lib.concat([
     src.modules + '/core/app.js',
     src.modules + '/**/init.js',
-    src.modules + '/**/*.js'
+    src.modules + '/**/*.js',
+    '!' + src.modules + '/*/tests/**/*.*'
   ]);
 };
 
@@ -129,7 +132,10 @@ gulp.task('basesass', function(){
 
 // JS linting task.
 gulp.task('jshint', function () {
-  return gulp.src([src.modules + '/**/*.js'])
+  return gulp.src([
+      src.modules + '/**/*.js',
+      '!' + src.modules + '/*/tests/**/*.js'
+    ])
     .pipe(plugins.jshint())
     .pipe(plugins.jshint.reporter('default'));
 });
@@ -280,6 +286,23 @@ gulp.task('module', function(done) {
 
 });
 
+/*
+  
+  Tests
+
+  Run tests
+
+*/
+
+gulp.task('karma', function(done) {
+
+  new karma({
+    configFile: __dirname + '/karma.conf.js',
+    // action: 'run',
+    singleRun: true
+  }, done).start();
+
+});
 
 /*
 
@@ -311,9 +334,13 @@ gulp.task('default', [ 'sass', 'basesass', 'scripts:dev', 'svgInject', 'jshint' 
   gulp.watch('./config.json', ['reloadConfig']);
 });
 
+// Testing.
+gulp.task('test', ['karma']);
+
 // The build task.
 gulp.task('build', function(done) {
   runSequence(
+    ['test'],
     ['clean', 'svgInject'],
     ['sass', 'jshint', 'scripts:dist', 'imagemin', 'templates', 'move', 'inline'],
     done
