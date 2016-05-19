@@ -98,7 +98,11 @@ gulp.task('sass', function() {
     .pipe(plugins.sourcemaps.init())
       .pipe(plugins.sass({
         style: 'compressed',
-        indentedSyntax: true
+        indentedSyntax: true,
+        includePaths: [
+          './src/components/standardize',
+          src.modules + '/core/sass'
+        ]
       }))
       .on('error', swallowError)
       .pipe(plugins.autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
