@@ -13,8 +13,8 @@
     "src/components"
   ],
   "dependencies": {
-    "angular": "1.4.9",
-    "angular-animate": "1.4.9",
+    "angular": "~1.4.9",
+    "angular-animate": "~1.4.9",
     "angular-ui-router": "~0.2.15",
     "underscore": "~1.7.0",
     "standardize": "~1.2.2",
